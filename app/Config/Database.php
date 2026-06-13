@@ -202,13 +202,13 @@ class Database extends Config
         // the default database config from environment variables.
         // Use getenv() here to support Railway/containers environment.
         $env = getenv('CI_ENVIRONMENT') ?: getenv('CI_ENV') ?: 'production';
-        $this->default['DSN'] = getenv('database.default.DSN') ?: '';
-        $this->default['hostname'] = getenv('database.default.hostname') ?: getenv('MYSQLHOST') ?: 'localhost';
-        $this->default['username'] = getenv('database.default.username') ?: getenv('MYSQLUSER') ?: 'root';
-        $this->default['password'] = getenv('database.default.password') ?: getenv('MYSQLPASSWORD') ?: '';
-        $this->default['database'] = getenv('database.default.database') ?: getenv('MYSQLDATABASE') ?: $this->default['database'];
-        $this->default['DBDriver'] = getenv('database.default.DBDriver') ?: 'MySQLi';
-        $this->default['port'] = (int) (getenv('database.default.port') ?: getenv('MYSQLPORT') ?: $this->default['port']);
+        $this->default['DSN'] = getenv('database.default.DSN') ?: getenv('DB_DSN') ?: getenv('DATABASE_DSN') ?: '';
+        $this->default['hostname'] = getenv('database.default.hostname') ?: getenv('MYSQLHOST') ?: getenv('DB_HOST') ?: getenv('DATABASE_HOST') ?: 'localhost';
+        $this->default['username'] = getenv('database.default.username') ?: getenv('MYSQLUSER') ?: getenv('DB_USER') ?: getenv('DB_USERNAME') ?: getenv('DATABASE_USER') ?: getenv('DATABASE_USERNAME') ?: 'root';
+        $this->default['password'] = getenv('database.default.password') ?: getenv('MYSQLPASSWORD') ?: getenv('DB_PASS') ?: getenv('DB_PASSWORD') ?: getenv('DATABASE_PASSWORD') ?: '';
+        $this->default['database'] = getenv('database.default.database') ?: getenv('MYSQLDATABASE') ?: getenv('DB_DATABASE') ?: getenv('DATABASE_NAME') ?: getenv('DATABASE') ?: $this->default['database'];
+        $this->default['DBDriver'] = getenv('database.default.DBDriver') ?: getenv('DB_DRIVER') ?: getenv('DATABASE_DRIVER') ?: 'MySQLi';
+        $this->default['port'] = (int) (getenv('database.default.port') ?: getenv('MYSQLPORT') ?: getenv('DB_PORT') ?: getenv('DATABASE_PORT') ?: $this->default['port']);
         $this->default['DBDebug'] = ($env !== 'production');
 
         // Ensure that we always set the database group to 'tests' if
