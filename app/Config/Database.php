@@ -25,15 +25,15 @@ class Database extends Config
      * @var array<string, mixed>
      */
     public array $default = [
-        'DSN'          => getenv('database.default.DSN') ?: '',
-        'hostname'     => getenv('database.default.hostname') ?: 'localhost',
-        'username'     => getenv('database.default.username') ?: 'root',
-        'password'     => getenv('database.default.password') ?: '',
-        'database'     => getenv('database.default.database') ?: 'batom_studio',
-        'DBDriver'     => getenv('database.default.DBDriver') ?: 'MySQLi',
-        'DBPrefix'     => getenv('database.default.DBPrefix') ?: '',
+        'DSN'          => '',
+        'hostname'     => 'localhost',
+        'username'     => 'root',
+        'password'     => '',
+        'database'     => 'batom_studio',
+        'DBDriver'     => 'MySQLi',
+        'DBPrefix'     => '',
         'pConnect'     => false,
-        'DBDebug'      => getenv('CI_ENVIRONMENT') === 'development' ? true : false,
+        'DBDebug'      => true,
         'charset'      => 'utf8mb4',
         'DBCollat'     => 'utf8mb4_general_ci',
         'swapPre'      => '',
@@ -41,7 +41,7 @@ class Database extends Config
         'compress'     => false,
         'strictOn'     => false,
         'failover'     => [],
-        'port'         => (int) (getenv('database.default.port') ?: 3306),
+        'port'         => 3306,
         'numberNative' => false,
         'foundRows'    => false,
         'dateFormat'   => [
@@ -50,6 +50,22 @@ class Database extends Config
             'time'     => 'H:i:s',
         ],
     ];
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        // Override with environment variables if available (for Railway deployment)
+        $this->default['DSN']      = env('database.default.DSN', $this->default['DSN']);
+        $this->default['hostname'] = env('database.default.hostname', $this->default['hostname']);
+        $this->default['username'] = env('database.default.username', $this->default['username']);
+        $this->default['password'] = env('database.default.password', $this->default['password']);
+        $this->default['database'] = env('database.default.database', $this->default['database']);
+        $this->default['DBDriver'] = env('database.default.DBDriver', $this->default['DBDriver']);
+        $this->default['DBPrefix'] = env('database.default.DBPrefix', $this->default['DBPrefix']);
+        $this->default['port']     = (int) env('database.default.port', $this->default['port']);
+        $this->default['DBDebug']  = env('CI_ENVIRONMENT') === 'development' ? true : false;
+    }
 
     //    /**
     //     * Sample database connection for SQLite3.
