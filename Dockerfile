@@ -31,5 +31,5 @@ RUN mkdir -p writable/logs writable/cache writable/session writable/uploads && \
 
 EXPOSE 8080
 
-# Run migrations and start server
-CMD ["sh", "-c", "php spark migrate:latest && exec php -S 0.0.0.0:${PORT:-8080} -t public public/index.php"]
+# Run migrations (allow failure) and start server
+CMD ["sh", "-c", "php spark migrate 2>&1 || true && exec php -S 0.0.0.0:${PORT:-8080} -t public public/index.php"]
