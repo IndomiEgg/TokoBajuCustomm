@@ -18,6 +18,19 @@ class App extends BaseConfig
      */
     public string $baseURL = '';
 
+    public function __construct()
+    {
+        if (empty($this->baseURL) || $this->baseURL === '/') {
+            $envBaseURL = getenv('app.baseURL') ?: getenv('app_baseURL') ?: getenv('APP_BASEURL') ?: getenv('APP_BASE_URL') ?: getenv('BASEURL') ?: getenv('BASE_URL');
+            if (! empty($envBaseURL)) {
+                $this->baseURL = rtrim($envBaseURL, '\/') . '/';
+            } elseif (! empty($_SERVER['HTTP_HOST'])) {
+                $scheme = (! empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+                $this->baseURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . '/';
+            }
+        }
+    }
+
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
      * If you want to accept multiple Hostnames, set this.
