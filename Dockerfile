@@ -22,8 +22,8 @@ COPY . .
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Copy .env template
-RUN cp app/Config/.env.example .env || true
+# Do not generate a .env from .env.example in production.
+# Railway should provide configuration via environment variables.
 
 EXPOSE 8080
 

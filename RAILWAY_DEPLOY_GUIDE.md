@@ -44,7 +44,7 @@ public array $default = [
     // ... rest config
 ];
 ```
-
+> Important: In production, do not generate `.env` from `.env.example` during build. If a `.env` file is created with placeholder values, it may override Railway environment variables and break the deployment.
 ## Step 3: Push to Git Repository
 
 ```bash
