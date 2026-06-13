@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     default-mysql-client \
     libicu-dev \
     && docker-php-ext-configure intl \
-    && docker-php-ext-install pdo pdo_mysql intl \
+    && docker-php-ext-install pdo pdo_mysql mysqli intl \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
