@@ -1,0 +1,913 @@
+/* ==========================================================================
+           1. CSS RESET & VARIABLE DEFINITION
+           ========================================================================== */
+:root {
+  --color-bg-deep: #020202;
+  --color-bg-matte: #070707;
+  --color-bg-card: rgba(12, 12, 12, 0.75);
+  --color-red-blood: #4a0404;
+  --color-red-crimson: #8c0d0d;
+  --color-red-bright: #b30f0f;
+  --color-red-glow: rgba(140, 13, 13, 0.35);
+  --color-gray-dark: #151515;
+  --color-gray-mid: #555555;
+  --color-gray-light: #a0a0a5;
+  --color-silver: #e2e2e5;
+  --font-serif: "Cinzel", serif;
+  --font-sans: "Montserrat", sans-serif;
+  --transition-slow: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  background-color: var(--color-bg-deep);
+  color: var(--color-silver);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+/* Custom Scrollbar for Luxury Aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-red-blood);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-red-bright);
+}
+
+/* Ambient Glow Spotlight (Desktop Cursor Tracker) */
+.cursor-glow {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    var(--color-red-glow) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  transition: transform 0.1s ease-out;
+}
+
+@media (max-width: 1024px) {
+  .cursor-glow {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+           2. MAIN GRID LAYOUT (SPLIT SCREEN 100VH)
+           ========================================================================== */
+.auth-container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  min-height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+           3. LEFT PANEL: EDITORIAL BRAND SHOWCASE
+           ========================================================================== */
+.brand-showcase {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.showcase-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80");
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(1) contrast(1.2) brightness(0.22);
+  transform: scale(1.05);
+  animation: slowAtmosphericPan 45s infinite alternate ease-in-out;
+  z-index: 1;
+}
+
+@keyframes slowAtmosphericPan {
+  0% {
+    transform: scale(1.02) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.15) translate(-1.5%, -1%);
+  }
+}
+
+.smoke-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    transparent 15%,
+    var(--color-bg-deep) 85%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+#smoke-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+/* Decorative Tattoo Pattern Borders */
+.tattoo-corner-decor {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
+  border: 1px solid rgba(140, 13, 13, 0.15);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.tattoo-corner-decor::before,
+.tattoo-corner-decor::after {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border: 2px solid var(--color-red-crimson);
+}
+
+.tattoo-corner-decor::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.tattoo-corner-decor::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+.showcase-content {
+  position: relative;
+  z-index: 5;
+  max-width: 550px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Fine-line Tattoo Vector Dividers */
+.tattoo-divider-top,
+.tattoo-divider-bottom {
+  width: 220px;
+  opacity: 0.75;
+  transition: var(--transition-slow);
+}
+
+.tattoo-divider-top {
+  margin-bottom: 40px;
+}
+.tattoo-divider-bottom {
+  margin-top: 50px;
+}
+
+.editorial-brand-name {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 4.5vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  margin-bottom: 5px;
+}
+
+.editorial-brand-name span {
+  color: var(--color-red-bright);
+  font-size: 1.5rem;
+  vertical-align: super;
+  font-weight: 300;
+  letter-spacing: normal;
+}
+
+.editorial-tagline {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--color-silver);
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(140, 13, 13, 0.4);
+}
+
+.showcase-desc {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--color-gray-light);
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+.badge-exclusive {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  color: var(--color-red-bright);
+  padding: 10px 25px;
+  border: 1px solid var(--color-red-crimson);
+  background: rgba(74, 4, 4, 0.15);
+  box-shadow: 0 0 15px var(--color-red-glow);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+           4. RIGHT PANEL: INTERACTION HUB & FORMS
+           ========================================================================== */
+.auth-panel {
+  background-color: var(--color-bg-matte);
+  border-left: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 80px 50px;
+  overflow-y: auto;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.auth-panel-wrapper {
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  animation: fadeInPanel 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInPanel {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Branding Anchor for Mobile View */
+.mobile-branding-header {
+  display: none;
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.mobile-brand-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #fff;
+}
+
+.mobile-brand-title span {
+  color: var(--color-red-bright);
+  font-size: 1rem;
+  vertical-align: super;
+}
+
+/* Segmented Tabs Control */
+.auth-tabs-navigation {
+  display: flex;
+  gap: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 18px 10px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-gray-mid);
+  cursor: pointer;
+  flex: 1;
+  position: relative;
+  transition: var(--transition-fast);
+}
+
+.tab-btn:hover {
+  color: #fff;
+}
+
+.tab-btn.active {
+  color: #fff;
+}
+
+.tab-indicator-bar {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-red-bright);
+  box-shadow: 0 0 10px var(--color-red-bright);
+  transform: scaleX(0);
+  transition: var(--transition-fast);
+}
+
+.tab-btn.active .tab-indicator-bar {
+  transform: scaleX(1);
+}
+
+/* Form Pane Mechanisms */
+.auth-pane-viewport {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.form-pane-item {
+  display: none;
+  opacity: 0;
+  transform: scale(0.97);
+  transition: var(--transition-fast);
+}
+
+.form-pane-item.active {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Form Elements */
+.form-stack-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.form-row-double {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group-relative {
+  position: relative;
+  width: 100%;
+}
+
+.input-luxury-field {
+  width: 100%;
+  padding: 15px 10px 5px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 300;
+  transition: var(--transition-fast);
+}
+
+.input-luxury-field:focus {
+  outline: none;
+  border-bottom-color: transparent;
+}
+
+.input-bottom-border-grow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-red-bright);
+  box-shadow: 0 0 8px var(--color-red-glow);
+  transform: scaleX(0);
+  transition: var(--transition-fast);
+}
+
+.input-luxury-field:focus ~ .input-bottom-border-grow {
+  transform: scaleX(1);
+}
+
+.label-luxury-floating {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  font-size: 0.8rem;
+  color: var(--color-gray-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  pointer-events: none;
+  transition: var(--transition-fast);
+}
+
+/* Floating Behavior trigger */
+.input-luxury-field:focus ~ .label-luxury-floating,
+.input-luxury-field:not(:placeholder-shown) ~ .label-luxury-floating {
+  top: -10px;
+  font-size: 0.68rem;
+  color: var(--color-red-bright);
+  letter-spacing: 0.2em;
+}
+
+.eye-toggle-btn {
+  position: absolute;
+  right: 5px;
+  top: 12px;
+  background: transparent;
+  border: none;
+  color: var(--color-gray-mid);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: var(--transition-fast);
+}
+
+.eye-toggle-btn:hover {
+  color: #fff;
+}
+
+/* Utility Rows */
+.form-utility-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 0.78rem;
+}
+
+/* Checkbox customization */
+.checkbox-luxury-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox-luxury-label input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-luxury-box {
+  height: 15px;
+  width: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-right: 10px;
+  display: inline-block;
+  position: relative;
+  transition: var(--transition-fast);
+}
+
+.checkbox-luxury-label:hover input ~ .checkbox-luxury-box {
+  border-color: var(--color-red-bright);
+}
+
+.checkbox-luxury-label input:checked ~ .checkbox-luxury-box {
+  background-color: var(--color-red-blood);
+  border-color: var(--color-red-bright);
+}
+
+.checkbox-luxury-box::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 4px;
+  top: 1px;
+  width: 4px;
+  height: 7px;
+  border: solid #fff;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-luxury-label input:checked ~ .checkbox-luxury-box::after {
+  display: block;
+}
+
+.checkbox-label-text {
+  color: var(--color-gray-light);
+}
+
+.checkbox-label-text a {
+  color: var(--color-silver);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  transition: var(--transition-fast);
+}
+
+.checkbox-label-text a:hover {
+  color: var(--color-red-bright);
+  border-bottom-color: var(--color-red-bright);
+}
+
+.forgot-pass-anchor {
+  color: var(--color-gray-mid);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.forgot-pass-anchor:hover {
+  color: #fff;
+}
+
+/* Primary Call to Action Button */
+.btn-luxury-submit {
+  position: relative;
+  width: 100%;
+  padding: 16px;
+  background: var(--color-red-blood);
+  border: 1px solid var(--color-red-crimson);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  cursor: pointer;
+  overflow: hidden;
+  transition: var(--transition-slow);
+}
+
+.btn-submit-text {
+  position: relative;
+  z-index: 2;
+}
+
+.btn-shimmer-sweep {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transition: var(--transition-slow);
+}
+
+.btn-luxury-submit:hover {
+  background-color: var(--color-red-crimson);
+  box-shadow: 0 0 25px var(--color-red-glow);
+  border-color: var(--color-red-bright);
+}
+
+.btn-luxury-submit:hover .btn-shimmer-sweep {
+  left: 100%;
+  transition: 0.8s ease-in-out;
+}
+
+/* ==========================================================================
+           5. SOCIAL LOGINS SECTION
+           ========================================================================== */
+.social-login-wrapper {
+  margin-bottom: 40px;
+}
+
+.social-title-divider {
+  text-align: center;
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.social-title-divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0.05) 80%,
+    transparent
+  );
+}
+
+.social-title-divider span {
+  position: relative;
+  background-color: var(--color-bg-matte);
+  padding: 0 15px;
+  font-size: 0.72rem;
+  color: var(--color-gray-mid);
+  letter-spacing: 0.2em;
+  display: inline-block;
+}
+
+.social-buttons-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.social-btn-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 13px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--color-silver);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.social-btn-item:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.02);
+  color: #fff;
+}
+
+/* ==========================================================================
+           6. PRIVILEGES / BENEFITS CARDS
+           ========================================================================== */
+.privileges-container {
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  padding-top: 40px;
+  margin-bottom: 40px;
+}
+
+.privileges-heading {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #fff;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.privileges-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.privilege-card {
+  display: flex;
+  gap: 15px;
+  background-color: rgba(10, 10, 10, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  padding: 18px;
+  transition: var(--transition-fast);
+}
+
+.privilege-card:hover {
+  border-color: rgba(140, 13, 13, 0.15);
+  background-color: rgba(14, 14, 14, 0.7);
+}
+
+.privilege-icon-box {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: rgba(140, 13, 13, 0.08);
+  border: 1px solid rgba(140, 13, 13, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-red-bright);
+  font-size: 0.9rem;
+}
+
+.privilege-text-content h4 {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.privilege-text-content p {
+  font-size: 0.78rem;
+  color: var(--color-gray-light);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+           7. SECURITY STATEMENT
+           ========================================================================== */
+.security-notice-panel {
+  display: flex;
+  gap: 15px;
+  background: linear-gradient(
+    135deg,
+    rgba(140, 13, 13, 0.06),
+    rgba(0, 0, 0, 0.1)
+  );
+  border: 1px solid rgba(140, 13, 13, 0.15);
+  padding: 18px 22px;
+  margin-bottom: 45px;
+}
+
+.security-notice-icon {
+  font-size: 1.1rem;
+  color: var(--color-red-bright);
+}
+
+.security-notice-desc {
+  font-size: 0.75rem;
+  color: var(--color-gray-light);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+           8. FOOTER METRICS
+           ========================================================================== */
+.panel-footer-area {
+  text-align: center;
+}
+
+.tattoo-footer-divider {
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto 20px auto;
+}
+
+.copyright-tag {
+  font-size: 0.72rem;
+  color: var(--color-gray-mid);
+  margin-bottom: 4px;
+}
+
+.slogan-tag {
+  font-family: var(--font-serif);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-red-bright);
+}
+
+/* ==========================================================================
+           9. TOAST ALERT SYSTEM
+           ========================================================================== */
+.toast-banner {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: rgba(8, 8, 8, 0.95);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(140, 13, 13, 0.3);
+  padding: 18px 25px;
+  display: flex;
+  gap: 15px;
+  z-index: 10000;
+  transform: translateY(120px);
+  opacity: 0;
+  transition: var(--transition-slow);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.toast-banner.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast-side-line {
+  width: 3px;
+  background-color: var(--color-red-bright);
+  box-shadow: 0 0 10px var(--color-red-bright);
+}
+
+.toast-header-info h4 {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 3px;
+}
+
+.toast-header-info p {
+  font-size: 0.8rem;
+  color: var(--color-gray-light);
+}
+
+/* ==========================================================================
+           9. PAGE-SPECIFIC LAYOUT OVERRIDES
+           ========================================================================== */
+header#site-header,
+footer {
+  display: none !important;
+}
+
+main {
+  min-height: 100vh;
+}
+
+.auth-container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ========================================================================== 
+           ========================================================================== */
+@media (max-width: 1200px) {
+  .auth-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 991px) {
+  .auth-container {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .brand-showcase {
+    display: none; /* Collapses the showcase to let the focus reside on client interactive panel */
+  }
+
+  .auth-panel {
+    padding: 60px 30px;
+    border-left: none;
+    min-height: 100vh;
+  }
+
+  .mobile-branding-header {
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .auth-panel {
+    padding: 45px 20px;
+  }
+
+  .form-row-double {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .social-buttons-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-utility-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}

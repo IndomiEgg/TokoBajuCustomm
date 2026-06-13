@@ -1,0 +1,9 @@
+{
+  "$schema": "https://schemas.railway.app/railwayrc.json",
+  "build": {
+    "builder": "dockerfile"
+  },
+  "deploy": {
+    "startCommand": "cd /app && php spark migrate --all && php -S 0.0.0.0:8080 -t public/"
+  }
+}

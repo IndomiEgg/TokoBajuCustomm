@@ -1,0 +1,1039 @@
+﻿<?= $this->extend('layout/template') ?>
+
+<?= $this->section('content') ?>
+
+    <div class="app-view-section active" id="view-landing">
+
+        <!-- Hero Campaign Introduction Banner -->
+        <section class="hero" id="home">
+            <div class="hero-bg-media"></div>
+            <div class="smoke-curtain"></div>
+            <!-- Interactive HTML5 Ash cloud soot system -->
+            <canvas id="hero-smoke-canvas"></canvas>
+            <div class="tattoo-corner-borders"></div>
+
+            <div class="hero-wrapper">
+                <span class="hero-overline-tag">1:1 Exclusive Wearable Art Studio</span>
+                <h1 class="hero-headline">Fashion Is Not Worn. <br>It Is Carved Into Identity.</h1>
+                <p class="hero-subheadline">
+                    Exclusive handmade custom fashion and wearable artwork designed for individuals who refuse to be ordinary. Powered by tattoo heritage, raw street goth culture, and uncompromising artistic detailing.
+                </p>
+                <div class="hero-action-buttons">
+                    <a href="#gallery" class="btn-luxury btn-luxury-solid">View Gallery</a>
+                    <a href="#custom" class="btn-luxury btn-luxury-outline">Start Custom Project</a>
+                </div>
+                <div class="one-of-one-stamp">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Every garment is generated once and never duplicated globally</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Archival Gallery Showcase Section -->
+        <section id="gallery" class="gallery-section">
+            <div class="atelier-container">
+                
+                <div class="section-title-block">
+                    <span class="section-accent-tag">The Archival Vault</span>
+                    <h2 class="section-heading">Featured Portfolio</h2>
+                    <p class="section-subtitle">A collection of custom bespoke masterpieces previously handcrafted for our collectors worldwide.</p>
+                </div>
+
+                <!-- Dynamic Category Filter Tabs -->
+                <div class="gallery-filter-panel">
+                    <button class="filter-tab active" data-filter="all">All Portfolios</button>
+                    <button class="filter-tab" data-filter="jacket">Custom Jacket</button>
+                    <button class="filter-tab" data-filter="hoodie">Custom Hoodie</button>
+                    <button class="filter-tab" data-filter="denim">Custom Denim</button>
+                    <button class="filter-tab" data-filter="shirt">Custom T-Shirt</button>
+                    <button class="filter-tab" data-filter="tattoo">Tattoo Inspired</button>
+                    <button class="filter-tab" data-filter="religious">Religious Art</button>
+                </div>
+
+                <!-- Masonry Portfolio Layout Grid -->
+                <div class="masonry-gallery-grid" id="masonry-view">
+                    
+                    <!-- Project 1 -->
+                    <div class="masonry-item" data-category="jacket" data-img="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80" data-title="WRATH OF SATAN LEATHER" data-year="2026" data-price="12500000" data-desc="Vintage distressed cowhide leather jacket with dynamic hand-painted dark theological art on the entire back panel. High-heat cured with cracked metallic accents.">
+                        <div class="masonry-image-box">
+                            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80" alt="Wrath of Satan Leather" onerror="this.src='https://placehold.co/800x1100/020202/a61c3c?text=JACKET+1'">
+                        </div>
+                        <div class="masonry-item-overlay">
+                            <span class="item-overlay-tag">Custom Jacket</span>
+                            <h3 class="item-overlay-title">Wrath of Satan Leather</h3>
+                            <span class="item-overlay-spec">2026 — View Specifications</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="masonry-item" data-category="hoodie" data-img="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80" data-title="LAMENT ARCHIVE HOODIE" data-year="2025" data-price="2150000" data-desc="500GSM ultra-dense French Terry cotton hoodie featuring raw fine-line sleeve tattoo art drawings, raw distressed hems, and heavy hardware details.">
+                        <div class="masonry-image-box">
+                            <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80" alt="Lament Archive Hoodie" onerror="this.src='https://placehold.co/800x1100/020202/a61c3c?text=HOODIE+1'">
+                        </div>
+                        <div class="masonry-item-overlay">
+                            <span class="item-overlay-tag">Custom Hoodie</span>
+                            <h3 class="item-overlay-title">Lament Archive Hoodie</h3>
+                            <span class="item-overlay-spec">2025 — View Specifications</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="masonry-item" data-category="denim" data-img="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=800&q=80" data-title="FALLEN ANGELS DENIM" data-year="2026" data-price="4950000" data-desc="15oz rigid Japanese indigo selvedge denim jacket painted with white ink, highlighting gothic angel graphics cascading into a scratched crimson wash.">
+                        <div class="masonry-image-box">
+                            <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=800&q=80" alt="Fallen Angels Blue Denim" onerror="this.src='https://placehold.co/800x1100/020202/a61c3c?text=DENIM+1'">
+                        </div>
+                        <div class="masonry-item-overlay">
+                            <span class="item-overlay-tag">Custom Denim</span>
+                            <h3 class="item-overlay-title">Fallen Angels Denim</h3>
+                            <span class="item-overlay-spec">2026 — View Specifications</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="masonry-item" data-category="shirt" data-img="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" data-title="SACRED HEART GOTHIC TEE" data-year="2026" data-price="950000" data-desc="Raw-edge combed heavyweight long tee featuring hand-printed distressed religious cathedral lines and ink splatter details down both sleeves.">
+                        <div class="masonry-image-box">
+                            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" alt="Sacred Heart Gothic Shirt" onerror="this.src='https://placehold.co/800x1100/020202/a61c3c?text=SHIRT+1'">
+                        </div>
+                        <div class="masonry-item-overlay">
+                            <span class="item-overlay-tag">Custom T-Shirt</span>
+                            <h3 class="item-overlay-title">Sacred Heart Gothic Tee</h3>
+                            <span class="item-overlay-spec">2026 — View Specifications</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="masonry-item" data-category="tattoo" data-img="https://images.unsplash.com/photo-1508186227413-df1f5ecdeff1?auto=format&fit=crop&w=800&q=80" data-title="TRIBAL BLADE LINEN OVERCOAT" data-year="2025" data-price="8500000" data-desc="Raw organic black linen overcoat featuring deep tribal tattoo ink curves trailing from the neck, down the spine, wrapping around the cuffs.">
+                        <div class="masonry-image-box">
+                            <img src="https://images.unsplash.com/photo-1508186227413-df1f5ecdeff1?auto=format&fit=crop&w=800&q=80" alt="Tribal Blade Linen Overcoat" onerror="this.src='https://placehold.co/800x1100/020202/a61c3c?text=TATTOO+1'">
+                        </div>
+                        <div class="masonry-item-overlay">
+                            <span class="item-overlay-tag">Tattoo Inspired</span>
+                            <h3 class="item-overlay-title">Tribal Blade Linen</h3>
+                            <span class="item-overlay-spec">2025 — View Specifications</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 6 -->
+                    <div class="masonry-item" data-category="religious" data-img="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" data-title="OUR LADY OF SORROWS TRENCH" data-year="2026" data-price="14000000" data-desc="A full double-breasted premium dark grey gabardine trench coat featuring high-fidelity religious realism murals, finished with hand-burnished details.">
+                        <div class="masonry-image-box">
+                            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" alt="Our Lady of Sorrows Trench" onerror="this.src='https://placehold.co/800x1100/020202/a61c3c?text=RELIGIOUS+1'">
+                        </div>
+                        <div class="masonry-item-overlay">
+                            <span class="item-overlay-tag">Religious Art</span>
+                            <h3 class="item-overlay-title">Lady of Sorrows Trench</h3>
+                            <span class="item-overlay-spec">2026 — View Specifications</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <div class="gothic-divider-line">
+            <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,10 Q25,18 50,10 T100,10 M20,10 Q50,0 80,10" stroke="#8c0d0d" stroke-width="0.5" fill="none" />
+                <polygon points="50,4 53,10 50,16 47,10" fill="#cc162f" />
+            </svg>
+        </div>
+
+        <!-- Surcharges & Complexity Tiers Page Segment -->
+        <section id="pricing" class="pricing-guide-section section-darker">
+            <div class="atelier-container">
+                
+                <div class="section-title-block">
+                    <span class="section-accent-tag">Estimations & Surcharges</span>
+                    <h2 class="section-heading">Commission Guide</h2>
+                    <p class="section-subtitle">A dynamic showcase of previous hand-painted layouts cataloged by complexity tier and budget reference.</p>
+                </div>
+
+                <div class="price-reference-grid">
+                    
+                    <!-- Category 1 -->
+                    <div class="price-reference-card">
+                        <div class="pcard-visual">
+                            <span class="pcard-budget-badge">Under Rp 1JT</span>
+                            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="Minimal Custom Work">
+                        </div>
+                        <div class="pcard-info">
+                            <span class="pcard-tier">Minimalist Tier</span>
+                            <h3 class="pcard-heading">Small Accents</h3>
+                            <ul class="pcard-specs">
+                                <li><i class="fa-solid fa-gauge-high"></i> Difficulty: <span>Low (Line Art/Lettering)</span></li>
+                                <li><i class="fa-solid fa-hourglass-half"></i> Timeframe: <span>2 - 4 Days</span></li>
+                            </ul>
+                            <p class="pcard-desc">Ideal for small chest prints, simple forearm linework, minor sleeve patterns, or single-color lettering.</p>
+                            <div class="pcard-examples-list">
+                                <span>Simple sleeve artwork</span>
+                                <span>Small chest artwork</span>
+                                <span>Minimal custom design</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 2 -->
+                    <div class="price-reference-card">
+                        <div class="pcard-visual">
+                            <span class="pcard-budget-badge">Rp 1JT - Rp 3JT</span>
+                            <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=600&q=80" alt="Medium Custom Work">
+                        </div>
+                        <div class="pcard-info">
+                            <span class="pcard-tier">Symmetrical Tier</span>
+                            <h3 class="pcard-heading">Bespoke Illustrations</h3>
+                            <ul class="pcard-specs">
+                                <li><i class="fa-solid fa-gauge-high"></i> Difficulty: <span>Medium (Detailed Shading)</span></li>
+                                <li><i class="fa-solid fa-hourglass-half"></i> Timeframe: <span>5 - 8 Days</span></li>
+                            </ul>
+                            <p class="pcard-desc">Suited for mid-scale central graphics, intricate half-back panels, multi-layered text, and hand-painted tribal wraps.</p>
+                            <div class="pcard-examples-list">
+                                <span>Half back artwork</span>
+                                <span>Medium-size illustration</span>
+                                <span>Detailed lettering</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 3 -->
+                    <div class="price-reference-card">
+                        <div class="pcard-visual">
+                            <span class="pcard-budget-badge">Rp 3JT - Rp 6JT</span>
+                            <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80" alt="Full Back Custom Work">
+                        </div>
+                        <div class="pcard-info">
+                            <span class="pcard-tier">Masterpiece Tier</span>
+                            <h3 class="pcard-heading">Full Panel Artwork</h3>
+                            <ul class="pcard-specs">
+                                <li><i class="fa-solid fa-gauge-high"></i> Difficulty: <span>High (Realism / Multi-color)</span></li>
+                                <li><i class="fa-solid fa-hourglass-half"></i> Timeframe: <span>9 - 14 Days</span></li>
+                            </ul>
+                            <p class="pcard-desc">Designed for heavy full-back panels, mixed color compositions, overlapping motifs, and high-contrast cathedral realism.</p>
+                            <div class="pcard-examples-list">
+                                <span>Full back artwork</span>
+                                <span>Multi-color design</span>
+                                <span>Complex custom concept</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 4 -->
+                    <div class="price-reference-card">
+                        <div class="pcard-visual">
+                            <span class="pcard-budget-badge">Rp 6JT+</span>
+                            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80" alt="Full Garment Project">
+                        </div>
+                        <div class="pcard-info">
+                            <span class="pcard-tier">Atelier Elite Tier</span>
+                            <h3 class="pcard-heading">Bespoke Masterpiece</h3>
+                            <ul class="pcard-specs">
+                                <li><i class="fa-solid fa-gauge-high"></i> Difficulty: <span>Extreme (Full Composition)</span></li>
+                                <li><i class="fa-solid fa-hourglass-half"></i> Timeframe: <span>15 - 25 Days</span></li>
+                            </ul>
+                            <p class="pcard-desc">Our flagship service. Hand-painted full coverage jackets, matching sets, distressed denim overalls, and museum-grade concepts.</p>
+                            <div class="pcard-examples-list">
+                                <span>Full garment artwork</span>
+                                <span>Premium one-of-one masterpiece</span>
+                                <span>Highly detailed custom project</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <div class="gothic-divider-line">
+            <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,10 Q25,18 50,10 T100,10 M20,10 Q50,0 80,10" stroke="#8c0d0d" stroke-width="0.5" fill="none" />
+                <polygon points="50,4 53,10 50,16 47,10" fill="#cc162f" />
+            </svg>
+        </div>
+
+        <!-- Production & Design Flow Timeline Steps Section -->
+        <section id="process" class="process-section">
+            <div class="atelier-container">
+                
+                <div class="section-title-block">
+                    <span class="section-accent-tag">The Collaboration Journey</span>
+                    <h2 class="section-heading">How Process Works</h2>
+                    <p class="section-subtitle">We follow an intimate design ritual to ensure your final physical commission represents a part of your soul.</p>
+                </div>
+
+                <div class="timeline-wrapper">
+                    <div class="timeline-bar-axis"></div>
+                    
+                    <!-- Step 1 -->
+                    <div class="timeline-stop-node scroll-reveal">
+                        <div class="node-indicator">01</div>
+                        <div class="node-content">
+                            <span class="node-step-tag">Step 1</span>
+                            <h3 class="node-title">Consultation</h3>
+                            <p class="node-desc">Discuss your initial ideas, preferred canvas sizing, target placement, and dark luxury visual motifs directly with the head curator.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="timeline-stop-node scroll-reveal">
+                        <div class="node-indicator">02</div>
+                        <div class="node-content">
+                            <span class="node-step-tag">Step 2</span>
+                            <h3 class="node-title">Reference Collection</h3>
+                            <p class="node-desc">Send design references, mood boards, specific tattoo templates, or personal sketch ideas to map out the visual coordinates.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="timeline-stop-node scroll-reveal">
+                        <div class="node-indicator">03</div>
+                        <div class="node-content">
+                            <span class="node-step-tag">Step 3</span>
+                            <h3 class="node-title">Concept Development</h3>
+                            <p class="node-desc">Our studio lays out the digital template drafts, placement geometry, color maps, and creative guidelines for your approval.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="timeline-stop-node scroll-reveal">
+                        <div class="node-indicator">04</div>
+                        <div class="node-content">
+                            <span class="node-step-tag">Step 4</span>
+                            <h3 class="node-title">Production</h3>
+                            <p class="node-desc">Production begins. The textile is prepared, treated, and hand-painted/hand-distressed. This is the ritual where the wearable art is born.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="timeline-stop-node scroll-reveal">
+                        <div class="node-indicator">05</div>
+                        <div class="node-content">
+                            <span class="node-step-tag">Step 5</span>
+                            <h3 class="node-title">Finishing</h3>
+                            <p class="node-desc">Final detailing check. We dry-bake and thermally cure the pigments, stitch custom inner leather labels, and complete final structural testing.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div class="timeline-stop-node scroll-reveal">
+                        <div class="node-indicator">06</div>
+                        <div class="node-content">
+                            <span class="node-step-tag">Step 6</span>
+                            <h3 class="node-title">Delivery</h3>
+                            <p class="node-desc">Your 1:1 commission is safely enclosed in our branded black cedar cases and dispatched globally via high-security, trackable couriers.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <div class="gothic-divider-line">
+            <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,10 Q25,18 50,10 T100,10 M20,10 Q50,0 80,10" stroke="#8c0d0d" stroke-width="0.5" fill="none" />
+                <polygon points="50,4 53,10 50,16 47,10" fill="#cc162f" />
+            </svg>
+        </div>
+
+        <!-- Custom Atelier Designing & Configurator Form Room -->
+        <section id="custom" class="custom-request-section section-darker">
+            <div class="atelier-container">
+                
+                <div class="section-title-block">
+                    <span class="section-accent-tag">Atelier Commission Sheet</span>
+                    <h2 class="section-heading">Custom Design Room</h2>
+                    <p class="section-subtitle">Configure your bespoke specifications to register a project commission with our custom design team.</p>
+                </div>
+
+                <div class="custom-layout-grid">
+                    
+                    <div class="commission-form-column">
+                        
+                        <form id="bespoke-commission-form" autocomplete="off">
+                            
+                            <!-- Block 1: Client Bio info -->
+                            <div class="form-section-block">
+                                <h3 class="form-block-heading">01. Personal Information</h3>
+                                <div class="form-group-stack">
+                                    <div class="form-input-box">
+                                        <input type="text" id="cust-name" class="atelier-input" placeholder=" " required>
+                                        <label for="cust-name" class="atelier-label">Full Name</label>
+                                        <span class="atelier-input-border"></span>
+                                    </div>
+                                    <div class="form-input-box">
+                                        <input type="email" id="cust-email" class="atelier-input" placeholder=" " required>
+                                        <label for="cust-email" class="atelier-label">Email Address</label>
+                                        <span class="atelier-input-border"></span>
+                                    </div>
+                                    <div class="form-input-box">
+                                        <input type="tel" id="cust-phone" class="atelier-input" placeholder=" " required>
+                                        <label for="cust-phone" class="atelier-label">Phone Number</label>
+                                        <span class="atelier-input-border"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Block 2: Interactive choices -->
+                            <div class="form-section-block">
+                                <h3 class="form-block-heading">02. Garment Selection</h3>
+                                <div class="interactive-option-grid">
+                                    
+                                    <div class="custom-option-select-box">
+                                        <span class="option-box-heading">Product Type</span>
+                                        <div class="option-choices-row" id="product-type-choices">
+                                            <button type="button" class="choice-btn active" data-value="Jacket">Jacket</button>
+                                            <button type="button" class="choice-btn" data-value="Hoodie">Hoodie</button>
+                                            <button type="button" class="choice-btn" data-value="Denim">Denim</button>
+                                            <button type="button" class="choice-btn" data-value="T-Shirt">T-Shirt</button>
+                                            <button type="button" class="choice-btn" data-value="Tote Bag">Tote Bag</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-option-select-box">
+                                        <span class="option-box-heading">Size Selected</span>
+                                        <div class="option-choices-row" id="size-choices">
+                                            <button type="button" class="choice-btn" data-value="S">S</button>
+                                            <button type="button" class="choice-btn active" data-value="M">M</button>
+                                            <button type="button" class="choice-btn" data-value="L">L</button>
+                                            <button type="button" class="choice-btn" data-value="XL">XL</button>
+                                            <button type="button" class="choice-btn" data-value="XXL">XXL</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-option-select-box">
+                                        <span class="option-box-heading">Base Garment Color</span>
+                                        <div class="option-choices-row" id="color-choices">
+                                            <button type="button" class="choice-btn active" data-value="Black">Black</button>
+                                            <button type="button" class="choice-btn" data-value="White">White</button>
+                                            <button type="button" class="choice-btn" data-value="Gray">Gray</button>
+                                            <button type="button" class="choice-btn" data-value="Denim Blue">Denim Blue</button>
+                                            <button type="button" class="choice-btn" data-value="Custom">Custom</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="custom-option-select-box">
+                                        <span class="option-box-heading">Canvas Material</span>
+                                        <div class="option-choices-row" id="material-choices">
+                                            <button type="button" class="choice-btn active" data-value="Denim">Denim</button>
+                                            <button type="button" class="choice-btn" data-value="Cotton Combed">Cotton Combed</button>
+                                            <button type="button" class="choice-btn" data-value="Canvas">Canvas</button>
+                                            <button type="button" class="choice-btn" data-value="Fleece">Fleece</button>
+                                            <button type="button" class="choice-btn" data-value="Baby Terry">Baby Terry</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Block 3: Layout themes & uploads -->
+                            <div class="form-section-block">
+                                <h3 class="form-block-heading">03. Artwork Configuration</h3>
+                                
+                                <div class="custom-option-select-box" style="margin-bottom: 25px;">
+                                    <span class="option-box-heading">Artwork Placement</span>
+                                    <div class="choices-multi-select" id="placement-choices">
+                                        <button type="button" class="multi-btn" data-value="Front">Front</button>
+                                        <button type="button" class="multi-btn active" data-value="Back">Back</button>
+                                        <button type="button" class="multi-btn" data-value="Left Sleeve">Left Sleeve</button>
+                                        <button type="button" class="multi-btn" data-value="Right Sleeve">Right Sleeve</button>
+                                        <button type="button" class="multi-btn" data-value="Full Garment">Full Garment</button>
+                                    </div>
+                                </div>
+
+                                <div class="custom-option-select-box" style="margin-bottom: 25px;">
+                                    <span class="option-box-heading">Artwork Theme Style</span>
+                                    <div class="option-choices-row" id="theme-choices">
+                                        <button type="button" class="choice-btn active" data-value="Tattoo Style">Tattoo Style</button>
+                                        <button type="button" class="choice-btn" data-value="Gothic">Gothic</button>
+                                        <button type="button" class="choice-btn" data-value="Religious">Religious</button>
+                                        <button type="button" class="choice-btn" data-value="Anime">Anime</button>
+                                        <button type="button" class="choice-btn" data-value="Street Art">Street Art</button>
+                                        <button type="button" class="choice-btn" data-value="Horror">Horror</button>
+                                        <button type="button" class="choice-btn" data-value="Abstract">Abstract</button>
+                                        <button type="button" class="choice-btn" data-value="Custom Theme">Custom Theme</button>
+                                    </div>
+                                </div>
+
+                                <div class="simulated-upload-wrapper">
+                                    <div class="upload-indicator-card" id="ref-image-box">
+                                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                                        <h4>Reference Images Upload</h4>
+                                        <p>Select or drop up to 5 reference files.</p>
+                                        <input type="file" id="ref-files" multiple style="display: none;">
+                                        <span class="file-notif" id="ref-notif">No files selected</span>
+                                    </div>
+
+                                    <div class="upload-indicator-card" id="sketch-image-box">
+                                        <i class="fa-solid fa-pen-ruler"></i>
+                                        <h4>Design Sketch Upload (Optional)</h4>
+                                        <p>Upload a layout blueprint or draft sketch.</p>
+                                        <input type="file" id="sketch-file" style="display: none;">
+                                        <span class="file-notif" id="sketch-notif">No sketch selected</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Block 4: Budget pricing guides & dates -->
+                            <div class="form-section-block">
+                                <h3 class="form-block-heading">04. Narrative & Specifications</h3>
+                                <div class="form-group-stack">
+                                    <div class="form-input-box">
+                                        <textarea id="design-desc" class="atelier-input-textarea" rows="4" placeholder=" " required></textarea>
+                                        <label for="design-desc" class="atelier-label-textarea">Design Concept Description</label>
+                                        <span class="atelier-input-border"></span>
+                                    </div>
+
+                                    <div class="custom-option-select-box" style="margin-top: 15px; margin-bottom: 15px;">
+                                        <span class="option-box-heading">Budget Range Allocation</span>
+                                        <div class="option-choices-row" id="budget-choices">
+                                            <button type="button" class="choice-btn" data-value="Under 1JT">Under Rp 1JT</button>
+                                            <button type="button" class="choice-btn" data-value="1JT-3JT">Rp 1JT - Rp 3JT</button>
+                                            <button type="button" class="choice-btn active" data-value="3JT-6JT">Rp 3JT - Rp 6JT</button>
+                                            <button type="button" class="choice-btn" data-value="6JT+">Rp 6JT+</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row-double">
+                                        <div class="form-input-box">
+                                            <input type="date" id="deadline-date" class="atelier-input" required>
+                                            <label for="deadline-date" class="atelier-label-date">Target Deadline</label>
+                                            <span class="atelier-input-border"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-submit-commission">
+                                <span class="btn-text">Register Project Blueprint</span>
+                                <span class="btn-shimmer"></span>
+                            </button>
+
+                        </form>
+
+                        <!-- Success Frame receipt (Gothic layout card) -->
+                        <div class="success-commission-card" id="success-view-card">
+                            <div class="gothic-success-seal">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="50" cy="50" r="42" stroke="var(--color-red-bright)" stroke-width="1.5" fill="none" />
+                                    <path d="M50,18 L53,42 L77,45 L53,48 L50,72 L47,48 L23,45 L47,42 Z" fill="var(--color-red-bright)" />
+                                </svg>
+                            </div>
+                            <h3 class="success-heading">Commission Registered</h3>
+                            <p class="success-desc">We have compiled your visual specifications and personal request coordinates safely into our private commission ledger.</p>
+                            
+                            <div class="digital-receipt-slip">
+                                <div class="receipt-item"><span>Project Code:</span><strong id="receipt-id-field">SIM-2026-X89B</strong></div>
+                                <div class="receipt-item"><span>Requested Canvas:</span><span id="receipt-canvas-field">Denim Jacket (M)</span></div>
+                                <div class="receipt-item"><span>Artwork Theme:</span><span id="receipt-theme-field">Gothic Architecture</span></div>
+                                <div class="receipt-item"><span>Budget Target:</span><span id="receipt-budget-field">3JT-6JT</span></div>
+                            </div>
+
+                            <p class="success-notif" style="font-weight: 500; font-size: 0.8rem; text-transform: uppercase;">You can now check out this custom commission directly in your Cart!</p>
+                            
+                            <div style="display:flex; gap:10px;">
+                                <button onclick="injectCommissionToCart()" class="btn-luxury btn-luxury-solid" style="flex:1;">View In Cart</button>
+                                <button class="btn-luxury btn-luxury-outline" style="flex:1;" id="reset-form-btn">Register Another Project</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Side Info columns -->
+                    <div class="commission-info-column">
+                        <div class="atelier-narrative-panel">
+                            <h3 class="info-column-heading">The Sovereign Directives</h3>
+                            
+                            <div class="info-card-utility">
+                                <div class="info-card-icon"><i class="fa-solid fa-lock"></i></div>
+                                <div class="info-card-content">
+                                    <h4>Strictly One-of-One</h4>
+                                    <p>Once your sketch blueprint is approved and applied to a fabric surface, that template design is destroyed. We never print duplicates.</p>
+                                </div>
+                            </div>
+
+                            <div class="info-card-utility">
+                                <div class="info-card-icon"><i class="fa-solid fa-hand-holding-hand"></i></div>
+                                <div class="info-card-content">
+                                    <h4>Interactive Refinement</h4>
+                                    <p>Our digital sketching loop includes up to three structural revision stages to make sure your vision matches the designer's layout.</p>
+                                </div>
+                            </div>
+
+                            <div class="info-card-utility">
+                                <div class="info-card-icon"><i class="fa-solid fa-droplet"></i></div>
+                                <div class="info-card-content">
+                                    <h4>Thermoset Curing</h4>
+                                    <p>All items undergo a thermal seal curing process rendering the pigments water-resistant and washing machine safe.</p>
+                                </div>
+                            </div>
+
+                            <div class="aesthetic-editorial-card">
+                                <div class="dec-goth-border"></div>
+                                <p class="aesthetic-card-quote">"Fashion is temporary, but the markings carved into your leather, denim, and identity exist forever."</p>
+                                <span class="aesthetic-card-author">â€” Head Artisan, Batom</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <div class="gothic-divider-line">
+            <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,10 Q25,18 50,10 T100,10 M20,10 Q50,0 80,10" stroke="#8c0d0d" stroke-width="0.5" fill="none" />
+                <polygon points="50,4 53,10 50,16 47,10" fill="#cc162f" />
+            </svg>
+        </div>
+
+        <!-- About Philosophy Studio segment -->
+        <section id="about" class="about-atelier-section">
+            <div class="atelier-container">
+                <div class="about-split-layout">
+                    
+                    <div class="about-visual-canvas">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Atelier workspace and dark fashion editorial" onerror="this.src='https://placehold.co/800x1100/020202/a61c3c?text=ABOUT+WORKSPACE'">
+                    </div>
+
+                    <div class="about-narrative-canvas">
+                        <span class="section-accent-tag">The Philosophy</span>
+                        <h2 class="section-heading" style="text-align: left; margin-left: 0;">Beyond Mass Production</h2>
+                        
+                        <blockquote class="editorial-philosophic-quote">
+                            "Art should never be duplicated. Neither should identity."
+                        </blockquote>
+
+                        <div class="about-narrative-paragraphs">
+                            <p>
+                                Batom stands as a defiant monument against the sterile tide of modern fast fashion and repetitive production loops. We treat fabrics not as consumer products, but as living extensions of skinâ€”deserving of artistic mark-making and individualistic storytelling.
+                            </p>
+                            <p>
+                                Fusing Yohji Yamamoto's structural draping geometry, custom painted denim heritage, and the precise, eternal graphic elegance of <span>black-work tattooing</span>, we handcraft custom streetwear that demands to be noticed.
+                            </p>
+                            <p>
+                                Every single paint splatter, complex embroidery trace, and raw-edge cut is processed manually inside our Jakarta and Tokyo-based workshop cells. When you wear a Batom original, you are carrying a piece of a living museum.
+                            </p>
+                        </div>
+
+                        <div class="atelier-hallmarks-row">
+                            <div class="hallmark-cell">
+                                <h5>One of One</h5>
+                                <p>Absolutely zero template duplications or manufacturing lines.</p>
+                            </div>
+                            <div class="hallmark-cell">
+                                <h5>Tattoo Inspired</h5>
+                                <p>Hand-shaded motifs capturing the timeless soul of body art.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <div class="gothic-divider-line">
+            <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,10 Q25,18 50,10 T100,10 M20,10 Q50,0 80,10" stroke="#8c0d0d" stroke-width="0.5" fill="none" />
+                <polygon points="50,4 53,10 50,16 47,10" fill="#cc162f" />
+            </svg>
+        </div>
+
+        <!-- Inquiries Directory Contact Section -->
+        <section id="contact" class="contact-atelier-section section-darker">
+            <div class="atelier-container">
+                <div class="contact-split-layout">
+                    
+                    <div class="contact-inputs-column">
+                        <h3 class="contact-column-title">Private Inquiries</h3>
+                        <p class="contact-column-desc">Have a specific design request? Write us down and our creative department will reach back to structure your project blueprint.</p>
+                        
+                        <form id="contact-interactive-form" autocomplete="on">
+                            <div class="form-group-stack">
+                                <div class="form-input-box">
+                                    <input type="text" id="contact-name" name="name" class="atelier-input" placeholder=" " autocomplete="name" required>
+                                    <label for="contact-name" class="atelier-label">Name</label>
+                                    <span class="atelier-input-border"></span>
+                                </div>
+                                <div class="form-input-box">
+                                    <input type="email" id="contact-email" name="email" class="atelier-input" placeholder=" " autocomplete="email" required>
+                                    <label for="contact-email" class="atelier-label">Email Address</label>
+                                    <span class="atelier-input-border"></span>
+                                </div>
+                                <div class="form-input-box">
+                                    <textarea id="contact-msg" name="message" class="atelier-input-textarea" rows="4" placeholder=" " autocomplete="off" required></textarea>
+                                    <label for="contact-msg" class="atelier-label-textarea">Message details...</label>
+                                    <span class="atelier-input-border"></span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-submit-commission" style="margin-top: 25px;">
+                                <span class="btn-text">Submit Message</span>
+                                <span class="btn-shimmer"></span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="contact-channels-column">
+                        <h3 class="contact-column-title">Atelier Channels</h3>
+                        
+                        <div class="channel-anchors-stack">
+                            
+                            <a href="https://wa.me/6281361073822" class="channel-card" target="_blank">
+                                <div class="channel-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                                <div class="channel-info">
+                                    <h4>WhatsApp Hotline</h4>
+                                    <p>Direct live consulting 081361073822</p>
+                                </div>
+                            </a>
+
+                            <a href="#" class="channel-card">
+                                <div class="channel-icon"><i class="fa-brands fa-instagram"></i></div>
+                                <div class="channel-info">
+                                    <h4>Instagram Portal</h4>
+                                    <p>Explore daily process reels @batom.11</p>
+                                </div>
+                            </a>
+
+                            <a href="#" class="channel-card">
+                                <div class="channel-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <div class="channel-info">
+                                    <h4>Email Directory</h4>
+                                    <p>Send formal request sheet directly to curator</p>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==========================================================================
+       VIEW: CLIENT AUTHENTICATION DIRECTORY
+       ========================================================================== -->
+    <div class="app-view-section" id="view-auth">
+        <div class="auth-split-wrapper">
+            
+            <div class="auth-brand-showcase">
+                <div class="auth-showcase-bg"></div>
+                <div class="smoke-curtain"></div>
+                <!-- Independent ash simulation particle canvas inside Auth side -->
+                <canvas id="auth-ambient-canvas"></canvas>
+                <div class="auth-showcase-decor-border"></div>
+                
+                <div class="auth-showcase-content">
+                    <h2 class="logo" style="font-size: 3.5rem; letter-spacing: 0.3em; margin-bottom: 20px;">BATOM<span>1:1</span></h2>
+                    <p class="loader-tagline" style="font-size: 1.1rem; color: #fff; margin-bottom: 25px;">"Created Once. Owned Forever."</p>
+                    <p class="showcase-desc" style="font-size:0.9rem; color:var(--color-gray-light); line-height:1.8; margin-bottom:30px;">
+                        Enter the sanctuary of wearable art. Register your personal collector's profile to commission exclusive one-of-one custom fashion, track progress of your current handmade projects, and access archival masterworks.
+                    </p>
+                    <span class="badge-exclusive" style="padding: 10px 25px; border: 1px solid var(--color-red-bright); font-size:0.7rem; letter-spacing:0.3em; color:var(--color-red-bright); background:rgba(74,4,4,0.15)">Atelier Private Access</span>
+                </div>
+            </div>
+
+            <!-- Form Interaction hub panels -->
+            <div class="auth-panel">
+                <div class="auth-tabs">
+                    <button class="tab-trigger-btn active" data-auth-tab="signin">
+                        <span>Sign In</span>
+                        <div class="tab-indicator-bar"></div>
+                    </button>
+                    <button class="tab-trigger-btn" data-auth-tab="signup">
+                        <span>Create Account</span>
+                        <div class="tab-indicator-bar"></div>
+                    </button>
+                </div>
+
+                <div class="auth-panes-viewport" style="position:relative; min-height:360px;">
+                    
+                    <!-- Pane: LOGIN FORM -->
+                    <div class="auth-form-pane active" id="pane-signin">
+                        <form id="auth-signin-form" action="<?= base_url('auth/login') ?>" method="POST" autocomplete="on">
+                            <?= csrf_field() ?>
+                            
+                            <?php if (session()->getFlashdata('error')): ?>
+                                <div class="alert alert-error">
+                                    <i class="fa-solid fa-exclamation-circle"></i>
+                                    <?= session()->getFlashdata('error') ?>
+                                </div>
+                            <?php endif; ?>
+                            
+                            <div class="form-input-stack">
+                                <div class="form-input-box">
+                                    <input type="email" id="signin-email" name="email" class="atelier-input" placeholder=" " autocomplete="email" required>
+                                    <label for="signin-email" class="atelier-label">Email Address</label>
+                                    <span class="atelier-input-border"></span>
+                                </div>
+                                <div class="form-input-box">
+                                    <input type="password" id="signin-password" name="password" class="atelier-input" placeholder=" " autocomplete="current-password" required>
+                                    <label for="signin-password" class="atelier-label">Password</label>
+                                    <span class="atelier-input-border"></span>
+                                    <button type="button" class="password-toggle-anchor" aria-label="Toggle password view"><i class="fa-regular fa-eye-slash"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="checkbox-container-row">
+                                <label class="custom-checkbox-wrapper">
+                                    <input type="checkbox" id="signin-remember" name="remember">
+                                    <span class="checkbox-box"></span>
+                                    <span style="color:var(--color-gray-light)">Remember device</span>
+                                </label>
+                                <a href="#" style="color:var(--color-grey-mid); text-decoration:none;" id="forgot-trigger">Forgot Password?</a>
+                            </div>
+
+                            <button type="submit" class="btn-submit-commission">
+                                <span class="btn-text">Sign In</span>
+                                <span class="btn-shimmer"></span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Pane: REGISTRATION FORM -->
+                    <div class="auth-form-pane" id="pane-signup">
+                        <form id="auth-signup-form" action="<?= base_url('auth/register') ?>" method="POST" autocomplete="on">
+                            <?= csrf_field() ?>
+                            <div class="form-input-stack">
+                                <div class="form-input-grid-double">
+                                    <div class="form-input-box">
+                                        <input type="text" id="signup-name" name="full_name" class="atelier-input" placeholder=" " autocomplete="name" required value="<?= esc(old('full_name')) ?>">
+                                        <label for="signup-name" class="atelier-label">Full Name</label>
+                                        <span class="atelier-input-border"></span>
+                                    </div>
+                                    <div class="form-input-box">
+                                        <input type="text" id="signup-username" name="username" class="atelier-input" placeholder=" " autocomplete="username" required value="<?= esc(old('username')) ?>">
+                                        <label for="signup-username" class="atelier-label">Username</label>
+                                        <span class="atelier-input-border"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-input-box">
+                                    <input type="email" id="signup-email" name="email" class="atelier-input" placeholder=" " autocomplete="email" required value="<?= esc(old('email')) ?>">
+                                    <label for="signup-email" class="atelier-label">Email Address</label>
+                                    <span class="atelier-input-border"></span>
+                                </div>
+
+                                <div class="form-input-grid-double">
+                                    <div class="form-input-box">
+                                        <input type="password" id="signup-password" name="password" class="atelier-input" placeholder=" " autocomplete="new-password" required>
+                                        <label for="signup-password" class="atelier-label">Password</label>
+                                        <span class="atelier-input-border"></span>
+                                        <button type="button" class="password-toggle-anchor"><i class="fa-regular fa-eye-slash"></i></button>
+                                    </div>
+                                    <div class="form-input-box">
+                                        <input type="password" id="signup-confirm" name="password_confirm" class="atelier-input" placeholder=" " autocomplete="new-password" required>
+                                        <label for="signup-confirm" class="atelier-label">Confirm Password</label>
+                                        <span class="atelier-input-border"></span>
+                                        <button type="button" class="password-toggle-anchor"><i class="fa-regular fa-eye-slash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkbox-container-row">
+                                <label class="custom-checkbox-wrapper">
+                                    <input type="checkbox" id="signup-agree" name="agree_terms" value="1" required checked>
+                                    <span class="checkbox-box"></span>
+                                    <span style="color:var(--color-gray-light)">I accept the <a href="#" style="color:#fff; text-decoration:underline;">Terms & Conditions</a></span>
+                                </label>
+                            </div>
+
+                            <?php if (session()->getFlashdata('register_error')): ?>
+                                <div class="alert alert-error">
+                                    <i class="fa-solid fa-exclamation-circle"></i>
+                                    <?= session()->getFlashdata('register_error') ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <button type="submit" class="btn-submit-commission">
+                                <span class="btn-text">Create Collector Profile</span>
+                                <span class="btn-shimmer"></span>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+                <!-- Third-party social integrations -->
+                <div class="auth-social-section">
+                    <div class="auth-divider"><span>Continue With</span></div>
+                    <div class="social-grid-row">
+                        <button type="button" class="social-btn-element" id="google-trigger"><i class="fa-brands fa-google"></i><span>Google</span></button>
+                        <button type="button" class="social-btn-element" id="facebook-trigger"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></button>
+                    </div>
+                </div>
+
+                <div class="auth-privileges-box">
+                    <h3 style="font-family:var(--font-serif); font-size:1.15rem; letter-spacing:0.15em; text-transform:uppercase; text-align:center; margin-bottom:25px;">Collector Privileges</h3>
+                    <div class="auth-privileges-grid">
+                        <div class="privilege-row-card">
+                            <div class="privilege-row-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+                            <div>
+                                <h4 style="font-family:var(--font-serif); font-size:0.9rem; text-transform:uppercase; color:#fff; margin-bottom:4px;">Track Tailored Designs</h4>
+                                <p style="font-size:0.78rem; color:var(--color-gray-mid);">Real-time visual blueprints progression steps of your customized wearable canvas.</p>
+                            </div>
+                        </div>
+                        <div class="privilege-row-card">
+                            <div class="privilege-row-icon"><i class="fa-solid fa-heart-crack"></i></div>
+                            <div>
+                                <h4 style="font-family:var(--font-serif); font-size:0.9rem; text-transform:uppercase; color:#fff; margin-bottom:4px;">Save Archival Favorites</h4>
+                                <p style="font-size:0.78rem; color:var(--color-gray-mid);">Bookmark historical configurations and inspiration drafts directly in your dashboard vault.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- ==========================================================================
+       VIEW: SHOPPING CART & SELECTIONS LEDGER
+       ========================================================================== */ -->
+    <div class="app-view-section" id="view-cart" style="padding-top:140px; padding-bottom:100px;">
+        <div class="atelier-container">
+            
+            <div class="section-title-block" style="margin-bottom:50px;">
+                <span class="section-accent-tag">Securing Masterpieces</span>
+                <h1 class="section-heading" style="font-size: 3rem;">Shopping Cart</h1>
+                <p class="section-subtitle">Review your curated selections and bespoke custom designs before commission processing.</p>
+            </div>
+
+            <div class="cart-split-layout">
+                
+                <!-- Active Products Panel List -->
+                <div class="cart-wrapper-list">
+                    <div id="active-cart-injection-grid"></div>
+
+                    <!-- Handled Empty state context -->
+                    <div class="cart-empty-state" id="cart-empty-layout">
+                        <div class="empty-illustration">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.03)" stroke-width="2" fill="none" />
+                                <path d="M30,35 L40,35 L45,65 L70,65 L78,43 L35,43" stroke="rgba(145, 16, 34, 0.3)" stroke-width="2.5" fill="none" stroke-linejoin="round" />
+                                <circle cx="48" cy="74" r="5" fill="rgba(255, 255, 255, 0.15)" />
+                                <circle cx="68" cy="74" r="5" fill="rgba(255, 255, 255, 0.15)" />
+                            </svg>
+                        </div>
+                        <h3 style="font-family:var(--font-serif); font-size:1.8rem; text-transform:uppercase; color:#fff; margin-bottom:15px;">Your Cart is Empty</h3>
+                        <p style="font-size:0.9rem; color:var(--color-grey-light); max-width:400px; margin-bottom:30px;">There are currently no regular artifacts or design commissions in your profile session.</p>
+                        <a href="<?= base_url('/#gallery') ?>" class="btn-luxury btn-luxury-solid" style="max-width:250px; display:inline-block; text-align:center;">Return To Gallery</a>
+                    </div>
+                </div>
+
+                <!-- Summary Cost side panel -->
+                <div class="checkout-summary-column">
+                    <div class="checkout-summary-card">
+                        <h3 class="summary-title-text">Order Summary</h3>
+                        
+                        <div class="summary-metric-row">
+                            <span>Artifacts Subtotal</span>
+                            <span id="summary-subtotal">Rp 0</span>
+                        </div>
+
+                        <!-- Customized design commission applied surcharge -->
+                        <div class="summary-metric-row surcharge" id="summary-surcharge-row" style="display:none;">
+                            <span>Atelier Surcharge (Bespoke)</span>
+                            <span id="summary-surcharge">Rp 500.000</span>
+                        </div>
+
+                        <div class="summary-metric-row">
+                            <span>Estimated Shipping</span>
+                            <span id="summary-shipping">Rp 0</span>
+                        </div>
+
+                        <div class="summary-metric-row">
+                            <span>VAT Tax (11%)</span>
+                            <span id="summary-tax">Rp 0</span>
+                        </div>
+
+                        <div style="border-top: 1px solid rgba(255,255,255,0.05); margin:20px 0; padding-top:20px;"></div>
+
+                        <div class="summary-total-metric-row">
+                            <span style="font-family:var(--font-serif); text-transform:uppercase; color:#fff;">Grand Total</span>
+                            <span class="grand-total-price-text" id="summary-grandtotal">Rp 0</span>
+                        </div>
+
+                        <div style="margin-bottom:25px; font-size:0.75rem;">
+                            <label class="custom-checkbox-wrapper" style="align-items:flex-start;">
+                                <input type="checkbox" id="terms-agree" checked>
+                                <span class="checkbox-box" style="margin-top:2px;"></span>
+                                <span style="color:var(--color-grey-light)">I accept the <a href="#" style="color:#fff; text-decoration:underline;">Terms of Bespoke Commissioning</a> & Atelier rules.</span>
+                            </label>
+                        </div>
+
+                        <button class="btn-submit-commission" id="cart-checkout-trigger" style="margin-bottom:15px; padding:18px;">
+                            <span class="btn-text">PROCEED TO CHECKOUT</span>
+                            <span class="btn-shimmer"></span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Saved lower section list -->
+            <div class="cart-saved-later-section">
+                <h2 style="font-family:var(--font-serif); font-size:1.8rem; text-transform:uppercase; color:#fff; margin-bottom:10px;">Saved For Later</h2>
+                <p style="font-size:0.8rem; color:var(--color-grey-mid); margin-bottom:35px;">Artifacts moved to your profile session archive for secondary evaluation.</p>
+                <div class="saved-later-wrapper-grid" id="saved-later-injection-grid"></div>
+            </div>
+
+            <!-- Curated Recommended Cross-sells list -->
+            <div class="cart-recommendations-section">
+                <h2 style="font-family:var(--font-serif); font-size:1.8rem; text-transform:uppercase; color:#fff; margin-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:15px;">You May Also Like</h2>
+                <div class="recommendations-grid" id="recommendations-injection-grid"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       CHECKOUT PORTAL SUCCESS MODAL
+       ========================================================================== -->
+    <div class="checkout-modal-portal" id="checkout-secure-modal">
+        <div class="checkout-modal-card">
+            <button class="checkout-modal-close-trigger" id="checkout-close-btn" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="checkout-success-seal">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="42" stroke="var(--color-red-bright)" stroke-width="1.5" fill="none" />
+                    <circle cx="50" cy="50" r="37" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none" />
+                    <path d="M50,18 L53,42 L77,45 L53,48 L50,72 L47,48 L23,45 L47,42 Z" />
+                </svg>
+            </div>
+
+            <h3 style="font-family:var(--font-serif); font-size:1.8rem; color:#fff; text-transform:uppercase; margin-bottom:15px;">Transaction Complete</h3>
+            <p style="font-size:0.85rem; color:var(--color-grey-light); line-height:1.8; margin-bottom:35px;">Your checkout credential sequence has been uploaded. We are verifying the design blueprints with our head artisan curator. Receipt summary is recorded below.</p>
+            
+            <div class="checkout-receipt-slip" id="checkout-receipt-slip">
+                <div class="checkout-receipt-row"><span>Order Reference Code:</span><strong style="color: #fff;" id="receipt-ref-code">SMNSTR-2026-X79B</strong></div>
+                <div class="checkout-receipt-row"><span>Artifact Quantities:</span><span id="receipt-item-count">0 Items</span></div>
+                <div class="checkout-receipt-row"><span>Commission Blueprint:</span><span id="receipt-blueprint-status">None Active</span></div>
+                <div class="checkout-receipt-row total"><span>Amount Securely Processed:</span><span id="receipt-checkout-grandtotal">Rp 0</span></div>
+            </div>
+
+            <div class="checkout-actions-row" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:20px;">
+                <a id="checkout-whatsapp-share" href="#" target="_blank" class="btn-luxury btn-luxury-solid" style="flex:1; min-width:180px;">Send via WhatsApp</a>
+                <button id="receipt-download-btn" class="btn-luxury btn-luxury-outline" style="flex:1; min-width:180px;">Download Receipt JPG</button>
+            </div>
+
+            <button onclick="clearAndResetCartState()" class="btn-submit-commission" style="padding:15px; margin-top:18px; width:100%;">
+                <span class="btn-text">Return To Showroom</span>
+                <span class="btn-shimmer"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Active Global Toast popups notifications -->
+    <div class="toast-popup-element" id="system-toast-widget">
+        <div class="toast-popup-line"></div>
+        <div class="toast-popup-info">
+            <h4 id="toast-header-text">Notification</h4>
+            <p id="toast-description-text">Action details compiled successfully.</p>
+        </div>
+    </div>
+
+    <?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+    <script src="<?= base_url('assets/js/home.js') ?>"></script>
+<?= $this->endSection() ?>
+
