@@ -31,16 +31,19 @@ RUN mkdir -p writable/logs writable/cache writable/session writable/uploads && \
 
 EXPOSE 8080
 
-# Run migrations (allow failure) and start server
-# Generate .env file from Railway environment variables on startup
+# Generate .env from environment variables and run migrations/server
+# Use envsubst to expand ${VAR_NAME} syntax in shell commands
 CMD ["sh", "-c", "\
-    echo 'CI_ENVIRONMENT=${CI_ENVIRONMENT:-production}' > /app/.env && \
-    echo 'app.baseURL=${APP_BASEURL:-https://tokobajucustomm-production.up.railway.app/}' >> /app/.env && \
-    echo 'database.default.hostname=${DATABASE_HOST:-mysql.railway.internal}' >> /app/.env && \
-    echo 'database.default.port=${DATABASE_PORT:-3306}' >> /app/.env && \
-    echo 'database.default.database=${DATABASE_NAME:-railway}' >> /app/.env && \
-    echo 'database.default.username=${DATABASE_USER:-root}' >> /app/.env && \
-    echo 'database.default.password=${DATABASE_PASSWORD:-}' >> /app/.env && \
+    echo 'CI_ENVIRONMENT='${CI_ENVIRONMENT:-production} > /app/.env && \
+    echo 'app.baseURL='${APP_BASEURL:-https://tokobajucustomm-production.up.railway.app/} >> /app/.env && \
+    echo 'database.default.hostname='${DATABASE_HOST:-mysql.railway.internal} >> /app/.env && \
+    echo 'database.default.port='${DATABASE_PORT:-3306} >> /app/.env && \
+    echo 'database.default.database='${DATABASE_NAME:-railway} >> /app/.env && \
+    echo 'database.default.username='${DATABASE_USER:-root} >> /app/.env && \
+    echo 'database.default.password='${DATABASE_PASSWORD:-} >> /app/.env && \
     echo 'database.default.DBDriver=MySQLi' >> /app/.env && \
+    echo '.env generated:' && cat /app/.env && \
+    echo 'Running migrations...' && \
     php spark migrate 2>&1 || true && \
+    echo 'Starting server...' && \
     exec php -S 0.0.0.0:${PORT:-8080} -t public public/index.php"]
