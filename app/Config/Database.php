@@ -12,7 +12,7 @@ class Database extends Config
     /**
      * The directory that holds the Migrations and Seeds directories.
      */
-    public string $filesPath = APPPATH . 'Database' . DIRECTORY_SEPARATOR;
+    public string $filesPath = '';
 
     /**
      * Lets you choose which connection group to use if no other is specified.
@@ -25,15 +25,15 @@ class Database extends Config
      * @var array<string, mixed>
      */
     public array $default = [
-        'DSN'          => $_ENV['database.default.DSN'] ?? '',
-        'hostname'     => $_ENV['database.default.hostname'] ?? 'localhost',
-        'username'     => $_ENV['database.default.username'] ?? 'root',
-        'password'     => $_ENV['database.default.password'] ?? '',
-        'database'     => $_ENV['database.default.database'] ?? 'batom_custom',
+        'DSN'          => '',
+        'hostname'     => 'localhost',
+        'username'     => 'root',
+        'password'     => '',
+        'database'     => 'batom_custom',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,
-        'DBDebug'      => ($_ENV['CI_ENVIRONMENT'] ?? 'development') !== 'production',
+        'DBDebug'      => true,
         'charset'      => 'utf8mb4',
         'DBCollat'     => 'utf8mb4_general_ci',
         'swapPre'      => '',
@@ -41,7 +41,7 @@ class Database extends Config
         'compress'     => false,
         'strictOn'     => false,
         'failover'     => [],
-        'port'         => (int) ($_ENV['database.default.port'] ?? 3306),
+        'port'         => 3306,
         'numberNative' => false,
         'foundRows'    => false,
         'dateFormat'   => [
@@ -193,6 +193,23 @@ class Database extends Config
     public function __construct()
     {
         parent::__construct();
+
+        // Set filesPath at runtime to avoid invalid constant expressions
+        // during PHP compile-time in some hosting environments.
+        $this->filesPath = APPPATH . 'Database' . DIRECTORY_SEPARATOR;
+
+        // Respect environment selected for CI and allow overriding
+        // the default database config from environment variables.
+        // Use getenv() here to support Railway/containers environment.
+        $env = getenv('CI_ENVIRONMENT') ?: getenv('CI_ENV') ?: 'production';
+        $this->default['DSN'] = getenv('database.default.DSN') ?: '';
+        $this->default['hostname'] = getenv('database.default.hostname') ?: getenv('MYSQLHOST') ?: 'localhost';
+        $this->default['username'] = getenv('database.default.username') ?: getenv('MYSQLUSER') ?: 'root';
+        $this->default['password'] = getenv('database.default.password') ?: getenv('MYSQLPASSWORD') ?: '';
+        $this->default['database'] = getenv('database.default.database') ?: getenv('MYSQLDATABASE') ?: $this->default['database'];
+        $this->default['DBDriver'] = getenv('database.default.DBDriver') ?: 'MySQLi';
+        $this->default['port'] = (int) (getenv('database.default.port') ?: getenv('MYSQLPORT') ?: $this->default['port']);
+        $this->default['DBDebug'] = ($env !== 'production');
 
         // Ensure that we always set the database group to 'tests' if
         // we are currently running an automated test suite, so that
