@@ -8,30 +8,49 @@ class AddOrderPriceFields extends Migration
 {
     public function up()
     {
-        $fields = [
-            'final_price' => [
+        // Check if columns already exist
+        $db = \Config\Database::connect();
+        $fields = $db->getFieldData('orders');
+        $existingColumns = array_column($fields, 'name');
+
+        $fieldsToAdd = [];
+
+        if (!in_array('final_price', $existingColumns)) {
+            $fieldsToAdd['final_price'] = [
                 'type' => 'DECIMAL',
                 'constraint' => '10,2',
                 'null' => true,
                 'default' => null,
-            ],
-            'price_confirmed' => [
+            ];
+        }
+
+        if (!in_array('price_confirmed', $existingColumns)) {
+            $fieldsToAdd['price_confirmed'] = [
                 'type' => 'TINYINT',
                 'constraint' => 1,
                 'default' => 0,
-            ],
-            'price_note' => [
+            ];
+        }
+
+        if (!in_array('price_note', $existingColumns)) {
+            $fieldsToAdd['price_note'] = [
                 'type' => 'TEXT',
                 'null' => true,
-            ],
-            'whatsapp_url' => [
+            ];
+        }
+
+        if (!in_array('whatsapp_url', $existingColumns)) {
+            $fieldsToAdd['whatsapp_url'] = [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
                 'null' => true,
-            ],
-        ];
+            ];
+        }
 
-        $this->forge->addColumn('orders', $fields);
+        // Only add fields that don't exist
+        if (!empty($fieldsToAdd)) {
+            $this->forge->addColumn('orders', $fieldsToAdd);
+        }
     }
 
     public function down()
