@@ -3,6 +3,16 @@
 use CodeIgniter\Boot;
 use Config\Paths;
 
+// When using PHP's built-in web server, let it serve existing static files
+// directly instead of routing every request through CodeIgniter.
+if (php_sapi_name() === 'cli-server') {
+    $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $file = __DIR__ . $url;
+    if ($file !== __FILE__ && is_file($file)) {
+        return false;
+    }
+}
+
 /*
  *---------------------------------------------------------------
  * CHECK PHP VERSION
