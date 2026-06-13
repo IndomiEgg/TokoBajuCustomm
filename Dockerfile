@@ -29,20 +29,24 @@ RUN chown -R www-data:www-data /app && \
     chmod -R 755 /app/writable
 
 # Configure Apache
-RUN echo '<Directory /app/public>' > /etc/apache2/sites-available/000-default.conf && \
-    echo '    Options Indexes FollowSymLinks' >> /etc/apache2/sites-available/000-default.conf && \
-    echo '    AllowOverride All' >> /etc/apache2/sites-available/000-default.conf && \
-    echo '    Require all granted' >> /etc/apache2/sites-available/000-default.conf && \
-    echo '</Directory>' >> /etc/apache2/sites-available/000-default.conf && \
-    echo 'DocumentRoot /app/public' >> /etc/apache2/sites-available/000-default.conf
+RUN printf '%s\n' \
+    '<VirtualHost *:80>' \
+    '    DocumentRoot /app/public' \
+    '    <Directory /app/public>' \
+    '        Options Indexes FollowSymLinks' \
+    '        AllowOverride All' \
+    '        Require all granted' \
+    '    </Directory>' \
+    '</VirtualHost>' \
+    > /etc/apache2/sites-available/000-default.conf
 
 # Copy .env template
 RUN cp app/Config/.env.example .env || true
 
+# Ensure the entrypoint script is executable
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 EXPOSE 80
 
-ENV PORT 8080
-RUN sed -i 's/Listen 80/Listen ${PORT}/g' /etc/apache2/ports.conf
-RUN sed -i 's/:80/:${PORT}/g' /etc/apache2/sites-available/000-default.conf
-
-CMD ["apache2-foreground"]
+CMD ["/usr/local/bin/docker-entrypoint.sh"]
