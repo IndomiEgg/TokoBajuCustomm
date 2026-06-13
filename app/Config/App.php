@@ -25,7 +25,15 @@ class App extends BaseConfig
             if (! empty($envBaseURL)) {
                 $this->baseURL = rtrim($envBaseURL, '\/') . '/';
             } elseif (! empty($_SERVER['HTTP_HOST'])) {
-                $scheme = (! empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+                $forwardedProto = strtolower($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? $_SERVER['HTTP_X_FORWARDED_PROTOCOL'] ?? '');
+                $forwardedSsl   = strtolower($_SERVER['HTTP_X_FORWARDED_SSL'] ?? '');
+
+                if ($forwardedProto === 'https' || $forwardedSsl === 'on') {
+                    $scheme = 'https';
+                } else {
+                    $scheme = (! empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+                }
+
                 $this->baseURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . '/';
             }
         }

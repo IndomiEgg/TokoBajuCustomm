@@ -10,10 +10,7 @@
  | If you set 'display_errors' to '1', CI4's detailed error report will show.
  */
 error_reporting(E_ALL);
-// If you want to suppress more types of errors.
-// error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
-$displayErrors = (getenv('CI_DEBUG') === 'true' || getenv('DISPLAY_ERRORS') === '1');
-ini_set('display_errors', $displayErrors ? '1' : '0');
+ini_set('display_errors', '0');
 
 /*
  |--------------------------------------------------------------------------
