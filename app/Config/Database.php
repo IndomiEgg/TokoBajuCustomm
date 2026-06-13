@@ -180,15 +180,67 @@ class Database extends Config
 
         // Respect environment selected for CI and allow overriding
         // the default database config from environment variables.
-        // Use getenv() here to support Railway/containers environment.
+        // Support multiple naming conventions for Railway/containers compatibility:
+        // - Dot-notation: database.default.hostname, database.default.port
+        // - Underscore: DATABASE_HOST, DATABASE_PORT, DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD
+        // - MySQL style: MYSQLHOST, MYSQLPORT, MYSQLDATABASE, MYSQLUSER, MYSQLPASSWORD
+        // - Generic: DB_HOST, DB_PORT, DB_DATABASE, DB_USER, DB_PASSWORD
+        
         $env = getenv('CI_ENVIRONMENT') ?: getenv('CI_ENV') ?: 'production';
-        $this->default['DSN'] = getenv('database.default.DSN') ?: getenv('DB_DSN') ?: getenv('DATABASE_DSN') ?: '';
-        $this->default['hostname'] = getenv('database.default.hostname') ?: getenv('MYSQLHOST') ?: getenv('DB_HOST') ?: getenv('DATABASE_HOST') ?: 'localhost';
-        $this->default['username'] = getenv('database.default.username') ?: getenv('MYSQLUSER') ?: getenv('DB_USER') ?: getenv('DB_USERNAME') ?: getenv('DATABASE_USER') ?: getenv('DATABASE_USERNAME') ?: 'root';
-        $this->default['password'] = getenv('database.default.password') ?: getenv('MYSQLPASSWORD') ?: getenv('DB_PASS') ?: getenv('DB_PASSWORD') ?: getenv('DATABASE_PASSWORD') ?: '';
-        $this->default['database'] = getenv('database.default.database') ?: getenv('MYSQLDATABASE') ?: getenv('DB_DATABASE') ?: getenv('DATABASE_NAME') ?: getenv('DATABASE') ?: $this->default['database'];
-        $this->default['DBDriver'] = getenv('database.default.DBDriver') ?: getenv('DB_DRIVER') ?: getenv('DATABASE_DRIVER') ?: 'MySQLi';
-        $this->default['port'] = (int) (getenv('database.default.port') ?: getenv('MYSQLPORT') ?: getenv('DB_PORT') ?: getenv('DATABASE_PORT') ?: $this->default['port']);
+        
+        // DSN configuration
+        $this->default['DSN'] = getenv('database.default.DSN') ?: 
+                               getenv('DATABASE_DSN') ?: 
+                               getenv('DB_DSN') ?: '';
+        
+        // Hostname - most critical for connection
+        $this->default['hostname'] = getenv('database.default.hostname') ?: 
+                                    getenv('DATABASE_HOST') ?: 
+                                    getenv('MYSQLHOST') ?: 
+                                    getenv('DB_HOST') ?: 
+                                    getenv('RAILWAY_MYSQL_HOST') ?: 
+                                    'localhost';
+        
+        // Username
+        $this->default['username'] = getenv('database.default.username') ?: 
+                                    getenv('DATABASE_USER') ?: 
+                                    getenv('DATABASE_USERNAME') ?: 
+                                    getenv('MYSQLUSER') ?: 
+                                    getenv('DB_USER') ?: 
+                                    getenv('DB_USERNAME') ?: 
+                                    'root';
+        
+        // Password
+        $this->default['password'] = getenv('database.default.password') ?: 
+                                    getenv('DATABASE_PASSWORD') ?: 
+                                    getenv('MYSQLPASSWORD') ?: 
+                                    getenv('DB_PASSWORD') ?: 
+                                    getenv('DB_PASS') ?: '';
+        
+        // Database name
+        $this->default['database'] = getenv('database.default.database') ?: 
+                                    getenv('DATABASE_NAME') ?: 
+                                    getenv('DATABASE') ?: 
+                                    getenv('MYSQLDATABASE') ?: 
+                                    getenv('DB_DATABASE') ?: 
+                                    getenv('RAILWAY_MYSQL_DATABASE') ?: 
+                                    $this->default['database'];
+        
+        // DB Driver
+        $this->default['DBDriver'] = getenv('database.default.DBDriver') ?: 
+                                    getenv('DATABASE_DRIVER') ?: 
+                                    getenv('DB_DRIVER') ?: 'MySQLi';
+        
+        // Port
+        $portRaw = getenv('database.default.port') ?: 
+                  getenv('DATABASE_PORT') ?: 
+                  getenv('MYSQLPORT') ?: 
+                  getenv('DB_PORT') ?: 
+                  getenv('RAILWAY_MYSQL_PORT') ?: 
+                  $this->default['port'];
+        $this->default['port'] = (int) $portRaw;
+        
+        // Debug mode - disable in production
         $this->default['DBDebug'] = ($env !== 'production');
 
         // Ensure that we always set the database group to 'tests' if
