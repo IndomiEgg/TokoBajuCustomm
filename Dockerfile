@@ -6,7 +6,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     curl \
     default-mysql-client \
-    && docker-php-ext-install pdo pdo_mysql \
+    libicu-dev \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install pdo pdo_mysql intl \
     && a2enmod rewrite \
     && rm -rf /var/lib/apt/lists/*
 
