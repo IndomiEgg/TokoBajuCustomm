@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     && docker-php-ext-configure intl \
     && docker-php-ext-install pdo pdo_mysql intl \
-    && a2enmod rewrite \
+    && a2dismod mpm_event mpm_worker 2>/dev/null || true \
+    && a2enmod mpm_prefork rewrite \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
