@@ -27,39 +27,10 @@ RUN composer install --no-dev --optimize-autoloader
 
 # Create writable directories and set permissions
 RUN mkdir -p writable/logs writable/cache writable/session writable/uploads && \
-    chmod -R 777 writable
+    chmod -R 777 writable && \
+    chmod +x /app/docker-start.sh
 
 EXPOSE 8080
 
-# Generate .env from environment variables and run migrations/server
-# Use PHP because shell variable names cannot contain dots.
-CMD ["sh", "-c", "\
-    php -r ' \ 
-        $map = [ \ 
-            "CI_ENVIRONMENT" => ["CI_ENVIRONMENT", "CI_ENV"], \ 
-            "app.baseURL" => ["app.baseURL", "APP_BASEURL", "APP_BASE_URL", "BASEURL", "BASE_URL"], \ 
-            "database.default.hostname" => ["database.default.hostname", "DATABASE_HOST", "MYSQLHOST", "DB_HOST", "DATABASE_HOST"], \ 
-            "database.default.port" => ["database.default.port", "DATABASE_PORT", "MYSQLPORT", "DB_PORT"], \ 
-            "database.default.database" => ["database.default.database", "DATABASE_NAME", "DATABASE", "MYSQLDATABASE", "DB_DATABASE"], \ 
-            "database.default.username" => ["database.default.username", "DATABASE_USER", "DATABASE_USERNAME", "MYSQLUSER", "DB_USER"], \ 
-            "database.default.password" => ["database.default.password", "DATABASE_PASSWORD", "MYSQLPASSWORD", "DB_PASSWORD", "DB_PASS"], \ 
-            "database.default.DBDriver" => ["database.default.DBDriver", "DATABASE_DRIVER", "DB_DRIVER"], \ 
-        ]; \ 
-        file_put_contents("/app/.env", ""); \ 
-        foreach ($map as $key => $names) { \ 
-            $value = null; \ 
-            foreach ($names as $name) { \ 
-                $val = getenv($name); \ 
-                if ($val !== false) { \ 
-                    $value = $val; \ 
-                    break; \ 
-                } \ 
-            } \ 
-            file_put_contents("/app/.env", "$key=" . ($value === null ? '' : $value) . "\n", FILE_APPEND); \ 
-        } \ 
-    ' && \
-    echo '.env generated:' && cat /app/.env && \
-    echo 'Running migrations...' && \
-    php spark migrate 2>&1 || true && \
-    echo 'Starting server...' && \
-    exec php -S 0.0.0.0:${PORT:-8080} -t public public/index.php"]
+# Use a dedicated startup script to generate .env and launch the app.
+CMD ["/app/docker-start.sh"]
