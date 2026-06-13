@@ -18,26 +18,37 @@ DATABASE_PASSWORD = PVIdnNAYuQUQMbLHZbIQCovQwdPGMNRp
 APP_BASEURL = https://tokobajucustomm-production.up.railway.app/
 ```
 
-## PENTING: Variable Names Format
+## PENTING: Variable Names Format & Quotes
 
 Railway supports **UPPERCASE_SNAKE_CASE** format (not dot-notation like `database.default.hostname`).
+
+**Tentang Tanda Petik (Quotes):**
+- Railway UI **secara otomatis menambahkan quotes** ketika menampilkan variables
+- **TIDAK PERLU KHAWATIR** - ini adalah perilaku normal Railway
+- Quotes akan dihapus oleh Railway saat pass ke container environment
+- PHP `getenv()` akan menerima value **tanpa quotes**
+
+Contoh: Jika kamu set value `production`, Railway menampilkannya sebagai `"production"` di UI, tapi saat dijalankan di container jadi `production` (tanpa quotes).
 
 This Dockerfile generates `/app/.env` file from these variables at startup, which CodeIgniter reads.
 
 ## Verification
 
 After setting variables in Railway, redeploy:
+
 1. Go to TokoBajuCustomm service
 2. Click "Redeploy"
 3. Wait for deployment to complete
 4. Check Deploy Logs for database connection errors
 
 Expected log (no error):
+
 ```
 [CodeIgniter\\Migrations\\MigrationRunner] Batch 0 (...)
 ```
 
 If still see "Unable to connect to the database", verify:
+
 1. All 7 variables above are set in Railway
 2. No typos in variable names
 3. Try redeploy again
@@ -46,6 +57,7 @@ If still see "Unable to connect to the database", verify:
 ## Local Testing
 
 To test locally before Railway deploy:
+
 ```bash
 export DATABASE_HOST=mysql.railway.internal
 export DATABASE_PORT=3306
