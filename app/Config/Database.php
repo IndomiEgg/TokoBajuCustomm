@@ -51,43 +51,7 @@ class Database extends Config
         ],
     ];
 
-    public function __construct()
-    {
-        parent::__construct();
 
-        // Override with environment variables if available (for Railway deployment)
-        $this->default['DSN']      = env('database.default.DSN', $this->default['DSN']);
-        $this->default['hostname'] = env('database.default.hostname', $this->default['hostname']);
-        $this->default['username'] = env('database.default.username', $this->default['username']);
-        $this->default['password'] = env('database.default.password', $this->default['password']);
-        $this->default['database'] = env('database.default.database', $this->default['database']);
-        $this->default['DBDriver'] = env('database.default.DBDriver', $this->default['DBDriver']);
-        $this->default['DBPrefix'] = env('database.default.DBPrefix', $this->default['DBPrefix']);
-        $this->default['port']     = (int) env('database.default.port', $this->default['port']);
-        $this->default['DBDebug']  = env('CI_ENVIRONMENT') === 'development' ? true : false;
-    }
-
-    //    /**
-    //     * Sample database connection for SQLite3.
-    //     *
-    //     * @var array<string, mixed>
-    //     */
-    //    public array $default = [
-    //        'database'    => 'database.db',
-    //        'DBDriver'    => 'SQLite3',
-    //        'DBPrefix'    => '',
-    //        'DBDebug'     => true,
-    //        'swapPre'     => '',
-    //        'failover'    => [],
-    //        'foreignKeys' => true,
-    //        'busyTimeout' => 1000,
-    //        'synchronous' => null,
-    //        'dateFormat'  => [
-    //            'date'     => 'Y-m-d',
-    //            'datetime' => 'Y-m-d H:i:s',
-    //            'time'     => 'H:i:s',
-    //        ],
-    //    ];
 
     //    /**
     //     * Sample database connection for Postgre.

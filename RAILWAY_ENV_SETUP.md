@@ -5,6 +5,7 @@
 Untuk deployment di Railway, pastikan set environment variables berikut di Railway Dashboard:
 
 ### Database Configuration (WAJIB)
+
 ```
 database.default.hostname=<railway-mysql-host>
 database.default.username=<railway-mysql-user>
@@ -15,12 +16,14 @@ database.default.DBDriver=MySQLi
 ```
 
 ### Application Configuration
+
 ```
 CI_ENVIRONMENT=production
 app.baseURL=https://tokobajucustom-production.up.railway.app/
 ```
 
 ### Optional Security
+
 ```
 app.forceGlobalSecureRequests=true
 app.CSPEnabled=true
@@ -38,7 +41,9 @@ app.CSPEnabled=true
    - **Database**: Default `railway` or your custom database name
 
 ## Example Connection String
+
 Railway biasanya menyediakan format:
+
 ```
 mysql://<username>:<password>@<hostname>:<port>/<database>
 ```
@@ -65,6 +70,7 @@ mysql://<username>:<password>@<hostname>:<port>/<database>
 ### If registration still fails:
 
 1. **Check Database Connection**
+
    ```bash
    # In Railway terminal or SSH
    mysql -h <hostname> -u <username> -p<password> -D batom_studio -e "SHOW TABLES;"
@@ -77,6 +83,7 @@ mysql://<username>:<password>@<hostname>:<port>/<database>
    - Look for error messages from `/writable/logs/`
 
 3. **Verify Database Schema**
+
    ```bash
    mysql -h <hostname> -u <username> -p<password> -D batom_studio -e "DESC users;"
    ```
