@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y \
     git \
     unzip \
     curl \
-    mysql-client \
+    default-mysql-client \
     && docker-php-ext-install pdo pdo_mysql \
     && a2enmod rewrite \
     && rm -rf /var/lib/apt/lists/*
@@ -37,5 +37,9 @@ RUN echo '<Directory /app/public>' > /etc/apache2/sites-available/000-default.co
 RUN cp app/Config/.env.example .env || true
 
 EXPOSE 80
+
+ENV PORT 8080
+RUN sed -i 's/Listen 80/Listen ${PORT}/g' /etc/apache2/ports.conf
+RUN sed -i 's/:80/:${PORT}/g' /etc/apache2/sites-available/000-default.conf
 
 CMD ["apache2-foreground"]
