@@ -22,9 +22,17 @@ class App extends BaseConfig
     {
         if (empty($this->baseURL) || $this->baseURL === '/') {
             $envBaseURL = getenv('app.baseURL') ?: getenv('app_baseURL') ?: getenv('APP_BASEURL') ?: getenv('APP_BASE_URL') ?: getenv('BASEURL') ?: getenv('BASE_URL');
+
             if (! empty($envBaseURL)) {
-                $this->baseURL = rtrim($envBaseURL, '\/') . '/';
-            } elseif (! empty($_SERVER['HTTP_HOST'])) {
+                $normalized   = rtrim($envBaseURL, '\/') . '/';
+                $validUrl     = filter_var($normalized, FILTER_VALIDATE_URL);
+
+                if ($validUrl !== false && $normalized !== '/') {
+                    $this->baseURL = $normalized;
+                }
+            }
+
+            if (empty($this->baseURL) && ! empty($_SERVER['HTTP_HOST'])) {
                 $forwardedProto = strtolower($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? $_SERVER['HTTP_X_FORWARDED_PROTOCOL'] ?? '');
                 $forwardedSsl   = strtolower($_SERVER['HTTP_X_FORWARDED_SSL'] ?? '');
 
@@ -35,6 +43,10 @@ class App extends BaseConfig
                 }
 
                 $this->baseURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . '/';
+            }
+
+            if (empty($this->baseURL) && php_sapi_name() === 'cli') {
+                $this->baseURL = 'http://localhost/';
             }
         }
     }
