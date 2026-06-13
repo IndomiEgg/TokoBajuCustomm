@@ -25,15 +25,15 @@ class Database extends Config
      * @var array<string, mixed>
      */
     public array $default = [
-        'DSN'          => '',
-        'hostname'     => 'localhost',
-        'username'     => 'root',
-        'password'     => '',
-        'database'     => 'batom_custom',
-        'DBDriver'     => 'MySQLi',
-        'DBPrefix'     => '',
+        'DSN'          => getenv('database.default.DSN') ?: '',
+        'hostname'     => getenv('database.default.hostname') ?: 'localhost',
+        'username'     => getenv('database.default.username') ?: 'root',
+        'password'     => getenv('database.default.password') ?: '',
+        'database'     => getenv('database.default.database') ?: 'batom_studio',
+        'DBDriver'     => getenv('database.default.DBDriver') ?: 'MySQLi',
+        'DBPrefix'     => getenv('database.default.DBPrefix') ?: '',
         'pConnect'     => false,
-        'DBDebug'      => true,
+        'DBDebug'      => getenv('CI_ENVIRONMENT') === 'development' ? true : false,
         'charset'      => 'utf8mb4',
         'DBCollat'     => 'utf8mb4_general_ci',
         'swapPre'      => '',
@@ -41,7 +41,7 @@ class Database extends Config
         'compress'     => false,
         'strictOn'     => false,
         'failover'     => [],
-        'port'         => 3306,
+        'port'         => (int) (getenv('database.default.port') ?: 3306),
         'numberNative' => false,
         'foundRows'    => false,
         'dateFormat'   => [
